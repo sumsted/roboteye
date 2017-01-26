@@ -8,15 +8,18 @@ HOST = '0.0.0.0'
 ROBOT_PORT = 5800
 MJPEG_PORT = 5801
 KIOSK_PORT = 5802
-
+INTERFACE = "eth0"
 
 def get_ip_address(ifname):
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    result = "." + socket.inet_ntoa(fcntl.ioctl(
-        s.fileno(),
-        0x8915,  # SIOCGIFADDR
-        struct.pack('256s', ifname[:15].encode())
-    )[20:24])
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        result = "." + socket.inet_ntoa(fcntl.ioctl(
+            s.fileno(),
+            0x8915,  # SIOCGIFADDR
+            struct.pack('256s', ifname[:15].encode())
+        )[20:24])
+    except Exception as e:
+        result = 'unknown'
     return result
 
 
@@ -33,7 +36,7 @@ def get_ip_address_windows(ifname):
 
 def get_netstat_output():
     try:
-        p = subprocess.Popen(['netstat', '-a'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(['netstat', '-an'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, err = p.communicate()
     except Exception as e:
         output = 'netstat not available\n%s' % str(e)

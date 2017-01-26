@@ -7,13 +7,15 @@
     <title>kiosk</title>
 </head>
 <body>
-IP<br/>
+IP
 {{ip_address}}<br/>
-ClickCrack<br/>
-{{click_crack_status}}<br/>
 Robot :5800<br/>
 {{robot_status}}<br/>
 MJPEG :5801<br/>
 {{mjpeg_status}}<br/>
+nestat -an<br/>
+<pre>
+{{netstat_output}}
+</pre>
 </body>
 </html>
