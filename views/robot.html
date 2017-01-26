@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Robot Target</title>
+
+    <style>
+        .video-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .video {
+            width: 640px;
+            height: 480px;
+        }
+
+        .target {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 640px;
+            height: 480px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="video-container">
+    <img id="viewport" class="video" src="static/img/placeholder.jpeg">
+    <img class="target" src="static/img/grid.png">
+</div>
+
+<script>
+
+    var app = {
+        'start': function () {
+            this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":8082/?action=stream";
+            this.mapToViewport();
+        },
+        'mapToViewport': function () {
+            document.getElementById("viewport").src=this.MJPEG_STREAM_URL;
+        }
+    }
+
+    document.onload = app.start();
+
+</script>
+</body>
+
+</html>
