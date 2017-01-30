@@ -1,4 +1,4 @@
-if ps -ef | grep 'roboteye.py' >/dev/null 2>&1; then
+if ps -ef | grep "roboteye.py" | grep -v grep >/dev/null 2>&1; then
     echo "roboteye is already running"
     exit 0
 else

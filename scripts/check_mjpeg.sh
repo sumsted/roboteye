@@ -1,4 +1,4 @@
-if ps -ef | grep 'mjpg-streamer >/dev/null 2>&1; then
+if ps -ef | grep "mjpg-streamer" | grep -v grep >/dev/null 2>&1; then
     echo "mjpeg-streamer is already running"
     exit 0
 else
