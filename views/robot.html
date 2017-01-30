@@ -65,7 +65,7 @@
         <img id="viewport" class="video" src="static/img/sample.png">
         <canvas id="target-overlay" width="640px" height="480px" class="target"></canvas>
     </div>
-    <div>|    <a href="#" onclick="app.clearTargetOverlay()">Clear</a>    |    <a href="#" onclick="app.drawDot()">Dot</a>    |    <a href="#" onclick="app.drawBox()">Box</a>         <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
+    <div>|    <a href="#" onclick="app.clearTargetOverlay()">Clear</a>    |    <a href="#" onclick="app.drawDot()">Dot</a>    |    <a href="#" onclick="app.drawBox()">Box</a>    |    <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
 </div>
 
 <script>
@@ -152,9 +152,9 @@
         'drawDot': function(){
             this.clearTargetOverlay();
             this.context.beginPath();
-            this.context.lineWidth = 2;
+            this.context.lineWidth = 3;
             this.context.strokeStyle = '#FF0000';
-            this.context.fillRect(this.canvasElement.width/2-1,this.canvasElement.height/2-2,2,2);
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,2,0,2*Math.PI);
             this.context.stroke();
         }
     }
