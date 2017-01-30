@@ -38,8 +38,8 @@
         .video-container {
             display: inline-block;
             position: relative;
-            width: 480px;
-            height: 240px;
+            width: 640px;
+            height: 480px;
         }
 
         .video {
@@ -63,7 +63,7 @@
 <div class="container">
     <div class="video-container">
         <img id="viewport" class="video" src="static/img/sample.png">
-        <canvas id="target-overlay" width="480px" height="240px" class="target"></canvas>
+        <canvas id="target-overlay" width="640px" height="480px" class="target"></canvas>
     </div>
     <div>|     <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
 </div>
@@ -72,7 +72,7 @@
 
     var app = {
         'start': function () {
-//            this.mapToViewport();
+            this.mapToViewport();
             this.canvasElement = document.getElementById("target-overlay");
             this.context = this.canvasElement.getContext("2d");
             this.drawGrid();
@@ -111,14 +111,14 @@
             this.context.strokeStyle = '#FFFF00';
             for(var i=0;i<this.canvasElement.height;i++){
                 if(i%20==0){
-                    this.context.moveTo(this.canvasElement.width/2-10,i);
-                    this.context.lineTo(this.canvasElement.width/2+10,i);
+                    this.context.moveTo(this.canvasElement.width/2-12,i);
+                    this.context.lineTo(this.canvasElement.width/2+12,i);
                 }
             }
             for(var j=0;j<this.canvasElement.width;j++){
                 if(j%20==0){
-                    this.context.moveTo(j,this.canvasElement.height/2-10);
-                    this.context.lineTo(j,this.canvasElement.height/2+10);
+                    this.context.moveTo(j,this.canvasElement.height/2-12);
+                    this.context.lineTo(j,this.canvasElement.height/2+12);
                 }
             }
             this.context.stroke();
