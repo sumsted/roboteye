@@ -9,22 +9,50 @@
     <title>Robot Target</title>
 
     <style>
+        body {
+            background-color: #333;
+            font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+            color: #FFFFFF;
+        }
+
+        a {
+            font-weight: bold;
+            color: #FFFF00;
+            text-decoration: none;
+        }
+
+        a:link:active, a:visited:active {
+            color: #FFFF00;
+        }
+
+        a:hover{
+            color: #FF0000;
+        }
+
+        .container {
+            width: 100%;
+            text-align: center;
+        }
+
+
         .video-container {
             display: inline-block;
             position: relative;
+            width: 480px;
+            height: 240px;
         }
 
         .video {
-            width: 640px;
-            height: 480px;
+            width: 100%;
+            height: 100%;
         }
 
         .target {
             position: absolute;
             right: 0;
             top: 0;
-            width: 640px;
-            height: 480px;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -32,20 +60,82 @@
 
 <body>
 
-<div class="video-container">
-    <img id="viewport" class="video" src="static/img/placeholder.jpeg">
-    <img class="target" src="static/img/grid.png">
+<div class="container">
+    <div class="video-container">
+        <img id="viewport" class="video" src="static/img/sample.png">
+        <canvas id="target-overlay" width="480px" height="240px" class="target"></canvas>
+    </div>
+    <div>|     <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
 </div>
 
 <script>
 
     var app = {
         'start': function () {
-            this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":8082/?action=stream";
-            this.mapToViewport();
+//            this.mapToViewport();
+            this.canvasElement = document.getElementById("target-overlay");
+            this.context = this.canvasElement.getContext("2d");
+            this.drawGrid();
         },
         'mapToViewport': function () {
+            this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":8082/?action=stream";
             document.getElementById("viewport").src=this.MJPEG_STREAM_URL;
+        },
+        'clearTargetOverlay': function(){
+            this.canvasElement.width = this.canvasElement.width;
+            this.canvasElement.height = this.canvasElement.height;
+        },
+        'drawGrid': function(){
+            this.clearTargetOverlay();
+            this.context.beginPath();
+            this.context.lineWidth = 2;
+            this.context.strokeStyle = '#FF0000';
+            for(var i=0;i<this.canvasElement.height;i++){
+                if(i%60==0){
+                    this.context.moveTo(0,i);
+                    this.context.lineTo(this.canvasElement.width,i);
+                }
+            }
+            for(var j=0;j<this.canvasElement.width;j++){
+                if(j%60==0){
+                    this.context.moveTo(j,0);
+                    this.context.lineTo(j,this.canvasElement.height);
+                }
+            }
+            this.context.stroke();
+        },
+        'drawRectile': function(){
+            this.clearTargetOverlay();
+            this.context.beginPath();
+            this.context.lineWidth = 2;
+            this.context.strokeStyle = '#FFFF00';
+            for(var i=0;i<this.canvasElement.height;i++){
+                if(i%20==0){
+                    this.context.moveTo(this.canvasElement.width/2-10,i);
+                    this.context.lineTo(this.canvasElement.width/2+10,i);
+                }
+            }
+            for(var j=0;j<this.canvasElement.width;j++){
+                if(j%20==0){
+                    this.context.moveTo(j,this.canvasElement.height/2-10);
+                    this.context.lineTo(j,this.canvasElement.height/2+10);
+                }
+            }
+            this.context.stroke();
+        },
+        'drawTarget': function(){
+            this.clearTargetOverlay();
+            this.context.beginPath();
+            this.context.lineWidth = 2;
+            this.context.strokeStyle = '#0000FF';
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,40,0,2*Math.PI);
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,80,0,2*Math.PI);
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,120,0,2*Math.PI);
+            this.context.moveTo(0,this.canvasElement.height/2);
+            this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
+            this.context.moveTo(this.canvasElement.width/2,0);
+            this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+            this.context.stroke();
         }
     }
 

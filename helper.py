@@ -5,10 +5,9 @@ import fcntl
 import subprocess
 
 HOST = '0.0.0.0'
-ROBOT_PORT = 5800
-MJPEG_PORT = 5801
-KIOSK_PORT = 5802
+ROBOTEYE_PORT = 5800
 INTERFACE = "eth0"
+
 
 def get_ip_address(ifname):
     try:

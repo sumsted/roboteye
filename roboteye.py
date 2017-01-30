@@ -1,5 +1,5 @@
 from bottle import run, template, static_file, route, get
-from helper import ROBOT_PORT, HOST
+from helper import ROBOTEYE_PORT, HOST
 
 
 @route('/static/<filepath:path>')
@@ -13,4 +13,4 @@ def get_index():
 
 
 if __name__ == '__main__':
-    run(host=HOST, port=ROBOT_PORT)
+    run(host=HOST, port=ROBOTEYE_PORT)
