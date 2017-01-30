@@ -65,7 +65,7 @@
         <img id="viewport" class="video" src="static/img/sample.png">
         <canvas id="target-overlay" width="640px" height="480px" class="target"></canvas>
     </div>
-    <div>|     <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
+    <div>|     <a href="#" onclick="app.clearTargetOverlay()">Clear</a>    |     <a href="#" onclick="app.drawDot()">Dot</a>    |     <a href="#" onclick="app.drawRectile()">Rectile</a>    |     <a href="#" onclick="app.drawGrid()">Grid</a>    |    <a href="#" onclick="app.drawTarget()">Target</a>    |</div>
 </div>
 
 <script>
@@ -135,6 +135,28 @@
             this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
             this.context.moveTo(this.canvasElement.width/2,0);
             this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+            this.context.stroke();
+        },
+        'drawDot': function(){
+            this.clearTargetOverlay();
+            this.context.beginPath();
+            this.context.lineWidth = 2;
+            this.context.strokeStyle = '#0000FF';
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,40,0,2*Math.PI);
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,80,0,2*Math.PI);
+            this.context.arc(this.canvasElement.width/2,this.canvasElement.height/2,120,0,2*Math.PI);
+            this.context.moveTo(0,this.canvasElement.height/2);
+            this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
+            this.context.moveTo(this.canvasElement.width/2,0);
+            this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+            this.context.stroke();
+        },
+        'drawBox': function(){
+            this.clearTargetOverlay();
+            this.context.beginPath();
+            this.context.lineWidth = 2;
+            this.context.strokeStyle = '#0000FF';
+            this.context.fillRect(this.canvasElement.width/2,this.canvasElement.height/2,1,1);
             this.context.stroke();
         }
     }
