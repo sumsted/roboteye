@@ -1,0 +1,1 @@
+kill `ps -ef | grep "roboteye.py" | grep -v grep | awk '{print $2}'`
