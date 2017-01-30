@@ -78,7 +78,7 @@
             this.drawGrid();
         },
         'mapToViewport': function () {
-            this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":8082/?action=stream";
+            this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":5801/?action=stream";
             document.getElementById("viewport").src=this.MJPEG_STREAM_URL;
         },
         'clearTargetOverlay': function(){
