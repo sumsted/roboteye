@@ -100,7 +100,8 @@
             this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
             this.context.moveTo(this.canvasElement.width/2,0);
             this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
-
+            this.context.stroke();
+            this.context.beginPath();
             this.context.lineWidth = 1;
             this.context.strokeStyle = '#FFFF00';
             for(var i=59;i<(59*6);i+=59){
