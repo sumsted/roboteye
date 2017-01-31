@@ -115,18 +115,16 @@
             this.context.beginPath();
             this.context.lineWidth = 2;
             this.context.strokeStyle = '#FFFF00';
-            for(var i=0;i<this.canvasElement.height;i++){
-                if(i%20==0){
-                    this.context.moveTo(this.canvasElement.width/2-12,i);
-                    this.context.lineTo(this.canvasElement.width/2+12,i);
-                }
+            this.context.moveTo(0,this.canvasElement.height/2);
+            this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
+            this.context.moveTo(this.canvasElement.width/2,0);
+            this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+
+            for(var i=0;i<(59*4);i++){
+                this.context.moveTo(this.canvasElement.width/2+i,this.canvasElement.height-10);
+                this.context.lineTo(this.canvasElement.width/2+i,this.canvasElement.height+10);
             }
-            for(var j=0;j<this.canvasElement.width;j++){
-                if(j%20==0){
-                    this.context.moveTo(j,this.canvasElement.height/2-12);
-                    this.context.lineTo(j,this.canvasElement.height/2+12);
-                }
-            }
+
             this.context.stroke();
         },
         'drawTarget': function(){
