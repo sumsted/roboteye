@@ -218,13 +218,19 @@
         'drawBox': function(){
             this.clearTargetOverlay();
             this.context.beginPath();
-            this.context.lineWidth = 2;
+            this.context.lineWidth = 1;
             this.context.strokeStyle = '#FFFF00';
-            this.context.moveTo(this.canvasElement.width/2-150,this.canvasElement.height/2-100);
-            this.context.lineTo(this.canvasElement.width/2+150,this.canvasElement.height/2-100);
-            this.context.lineTo(this.canvasElement.width/2+150,this.canvasElement.height/2+100);
-            this.context.lineTo(this.canvasElement.width/2-150,this.canvasElement.height/2+100);
-            this.context.lineTo(this.canvasElement.width/2-150,this.canvasElement.height/2-100);
+            this.context.moveTo(this.canvasElement.width/2-118,this.canvasElement.height/2-118);
+            this.context.lineTo(this.canvasElement.width/2+118,this.canvasElement.height/2-118);
+            this.context.lineTo(this.canvasElement.width/2+118,this.canvasElement.height/2+118);
+            this.context.lineTo(this.canvasElement.width/2-118,this.canvasElement.height/2+118);
+            this.context.lineTo(this.canvasElement.width/2-118,this.canvasElement.height/2-118);
+            this.context.font = "12px Arial";
+            this.context.fillStyle = "#FFFF00";
+            this.context.fillText("10",this.canvasElement.width/2+121,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+137,this.canvasElement.height/2-10);
+            this.context.fillText("10",this.canvasElement.width/2+3,this.canvasElement.height/2-123);
+            this.context.fillText("o",this.canvasElement.width/2+19,this.canvasElement.height/2-128);
             this.context.stroke();
         },
         'drawDot': function(){
