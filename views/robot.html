@@ -143,6 +143,10 @@
             this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
             this.context.moveTo(this.canvasElement.width/2,0);
             this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+
+            this.context.font = "10px Courier";
+            this.context.fillText("5",this.canvasElement.width/2+62,this.canvasElement.width/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+70,this.canvasElement.width/2-10);
             this.context.stroke();
         },
         'drawBox': function(){
