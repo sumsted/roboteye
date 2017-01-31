@@ -124,12 +124,16 @@
                 var h = j%2 ? 20 : 10;
                 this.context.moveTo(this.canvasElement.width/2+i,this.canvasElement.height/2-h);
                 this.context.lineTo(this.canvasElement.width/2+i,this.canvasElement.height/2+h);
+                this.context.moveTo(this.canvasElement.width/2-i,this.canvasElement.height/2-h);
+                this.context.lineTo(this.canvasElement.width/2-i,this.canvasElement.height/2+h);
             }
 
             for(i=0, j=59;i<(59*4);i+=59, j++){
                 h = j%2 ? 20 : 10;
                 this.context.moveTo(this.canvasElement.width/2-h,this.canvasElement.height/2+i);
                 this.context.lineTo(this.canvasElement.width/2+h,this.canvasElement.height/2+i);
+                this.context.moveTo(this.canvasElement.width/2-h,this.canvasElement.height/2-i);
+                this.context.lineTo(this.canvasElement.width/2+h,this.canvasElement.height/2-i);
             }
 
             this.context.font = "12px Arial";
