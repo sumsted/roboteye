@@ -34,7 +34,6 @@
             text-align: center;
         }
 
-
         .video-container {
             display: inline-block;
             position: relative;
@@ -81,7 +80,7 @@
             this.mapToViewport();
             this.canvasElement = document.getElementById("target-overlay");
             this.context = this.canvasElement.getContext("2d");
-            this.drawGrid();
+            this.drawRectile();
         },
         'mapToViewport': function () {
             this.MJPEG_STREAM_URL = window.location.protocol+"//"+window.location.hostname+":5801/?action=stream";
@@ -107,13 +106,10 @@
             for(var i=59;i<(59*6);i+=59){
                 this.context.moveTo(this.canvasElement.width/2+i,0);
                 this.context.lineTo(this.canvasElement.width/2+i,this.canvasElement.height);
-
                 this.context.moveTo(this.canvasElement.width/2-i,0);
                 this.context.lineTo(this.canvasElement.width/2-i,this.canvasElement.height);
-
                 this.context.moveTo(0,this.canvasElement.height/2+i);
                 this.context.lineTo(this.canvasElement.width,this.canvasElement.height/2+i);
-
                 this.context.moveTo(0,this.canvasElement.height/2-i);
                 this.context.lineTo(this.canvasElement.width,this.canvasElement.height/2-i);
             }
@@ -194,7 +190,6 @@
             this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
             this.context.moveTo(this.canvasElement.width/2,0);
             this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
-
             this.context.font = "12px Arial";
             this.context.fillStyle = "#FFFF00";
             this.context.fillText("5",this.canvasElement.width/2+62,this.canvasElement.height/2-5);
