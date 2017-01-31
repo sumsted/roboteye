@@ -94,20 +94,45 @@
         'drawGrid': function(){
             this.clearTargetOverlay();
             this.context.beginPath();
-            this.context.lineWidth = 2;
+            this.context.lineWidth = 1;
             this.context.strokeStyle = '#FF0000';
-            for(var i=0;i<this.canvasElement.height;i++){
-                if(i%60==0){
-                    this.context.moveTo(0,i);
-                    this.context.lineTo(this.canvasElement.width,i);
-                }
+            this.context.moveTo(0,this.canvasElement.height/2);
+            this.context.lineTo(this.canvasElement.width, this.canvasElement.height/2);
+            this.context.moveTo(this.canvasElement.width/2,0);
+            this.context.lineTo(this.canvasElement.width/2,this.canvasElement.height);
+
+            for(var i=59;i<(59*6);i+=59){
+                this.context.moveTo(this.canvasElement.width/2+i,0);
+                this.context.lineTo(this.canvasElement.width/2+i,this.canvasElement.height);
+
+                this.context.moveTo(this.canvasElement.width/2-i,0);
+                this.context.lineTo(this.canvasElement.width/2-i,this.canvasElement.height);
+
+                this.context.moveTo(0,this.canvasElement.height/2+i);
+                this.context.lineTo(this.canvasElement.width,this.canvasElement.height/2+i);
+
+                this.context.moveTo(0,this.canvasElement.height/2-i);
+                this.context.lineTo(this.canvasElement.width,this.canvasElement.height/2-i);
             }
-            for(var j=0;j<this.canvasElement.width;j++){
-                if(j%60==0){
-                    this.context.moveTo(j,0);
-                    this.context.lineTo(j,this.canvasElement.height);
-                }
-            }
+
+            this.context.font = "12px Arial";
+            this.context.fillStyle = "#FFFF00";
+            this.context.fillText("5",this.canvasElement.width/2+62,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+70,this.canvasElement.height/2-10);
+            this.context.fillText("10",this.canvasElement.width/2+121,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+137,this.canvasElement.height/2-10);
+            this.context.fillText("15",this.canvasElement.width/2+180,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+196,this.canvasElement.height/2-10);
+            this.context.fillText("20",this.canvasElement.width/2+239,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+255,this.canvasElement.height/2-10);
+            this.context.fillText("25",this.canvasElement.width/2+298,this.canvasElement.height/2-5);
+            this.context.fillText("o",this.canvasElement.width/2+317,this.canvasElement.height/2-10);
+            this.context.fillText("5",this.canvasElement.width/2+3,this.canvasElement.height/2-64);
+            this.context.fillText("o",this.canvasElement.width/2+11,this.canvasElement.height/2-69);
+            this.context.fillText("10",this.canvasElement.width/2+3,this.canvasElement.height/2-123);
+            this.context.fillText("o",this.canvasElement.width/2+19,this.canvasElement.height/2-128);
+            this.context.fillText("15",this.canvasElement.width/2+3,this.canvasElement.height/2-182);
+            this.context.fillText("o",this.canvasElement.width/2+19,this.canvasElement.height/2-187);
             this.context.stroke();
         },
         'drawRectile': function(){
